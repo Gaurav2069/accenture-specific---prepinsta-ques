@@ -1,0 +1,54 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int solve(int r, int unit, int arr[], int n) {
+    if (n == 0) {
+        return -1;
+    }
+
+    int sum = 0;
+    for (int i = 0; i < n; i++) {
+        sum += arr[i];
+    }
+
+    if (sum < (r * unit)) {
+        return 0;
+    }
+
+    int temp = 0;
+    for (int i = 0; i < n; i++) {
+        temp += arr[i];
+
+        if (temp >= (r * unit)) {
+            return (i + 1);
+        }
+    }
+    
+    return -1; // Return -1 if the condition is never met
+}
+
+int main() {
+    cout << "Enter r: ";
+    int r;
+    cin >> r;
+
+    cout << "Enter unit: ";
+    int unit;
+    cin >> unit;
+
+    cout << "Enter size: ";
+    int n;
+    cin >> n;
+
+    int arr[n];
+    cout << "Enter array: ";
+    for (int i = 0; i < n; i++) {
+        cin >> arr[i];
+    }
+
+    int ans = solve(r, unit, arr, n);
+    cout<<"the answer is: ";
+    cout << ans;
+
+    return 0;
+}
